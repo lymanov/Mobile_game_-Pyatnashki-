@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button button1;
@@ -24,28 +28,56 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     Button button14;
     Button button15;
     Button zero;
+                                                                                // = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,15};
+    int[] game_num = {18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18};         //Начальное положение игры,заполненное случайным числом не равным 0-15
+    int[] game_win = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0};                   //Выграшное положение игры
+    String[] game_vivod = new String[16];
 
-    int[] game_num = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,15};
-    int[] game_win = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0};
+    public void calculate() {
+        Random rnd = new Random();
+        //boolean end =false;
+        boolean qw=true;
+        int index = 0;
+        do
+        {
+            int h = rnd.nextInt(16);
+            for(int i=0; i<16; i++)
+                if(game_num[i]==h)
+                   qw=false;
+            if(qw==true) {
+                game_num[index] = h;
+                index++;
+            }
+            qw=true;
+        }
+        while(index != 16);
+    }
+
 
     public void vivod()
     {
-        button1.setText(Integer.toString(game_num[0]));
-        button2.setText(Integer.toString(game_num[1]));
-        button3.setText(Integer.toString(game_num[2]));
-        button4.setText(Integer.toString(game_num[3]));
-        button5.setText(Integer.toString(game_num[4]));
-        button6.setText(Integer.toString(game_num[5]));
-        button7.setText(Integer.toString(game_num[6]));
-        button8.setText(Integer.toString(game_num[7]));
-        button9.setText(Integer.toString(game_num[8]));
-        button10.setText(Integer.toString(game_num[9]));
-        button11.setText(Integer.toString(game_num[10]));
-        button12.setText(Integer.toString(game_num[11]));
-        button13.setText(Integer.toString(game_num[12]));
-        button14.setText(Integer.toString(game_num[13]));
-        button15.setText(Integer.toString(game_num[14]));
-        zero.setText(Integer.toString(game_num[15]));
+        for(int i=0; i<16; i++){                        //Преобазуем массив в STRING для удобного вывода
+            if(game_num[i]!=0)
+                game_vivod[i]=Integer.toString(game_num[i]);
+            else                                        // в частности для того, чтобы вместо 0 выводилось пусто
+                game_vivod[i]="";
+        }
+        button1.setText(game_vivod[0]);                 //Вывод игры на экран
+        button2.setText(game_vivod[1]);
+        button3.setText(game_vivod[2]);
+        button4.setText(game_vivod[3]);
+        button5.setText(game_vivod[4]);
+        button6.setText(game_vivod[5]);
+        button7.setText(game_vivod[6]);
+        button8.setText(game_vivod[7]);
+        button9.setText(game_vivod[8]);
+        button10.setText(game_vivod[9]);
+        button11.setText(game_vivod[10]);
+        button12.setText(game_vivod[11]);
+        button13.setText(game_vivod[12]);
+        button14.setText(game_vivod[13]);
+        button15.setText(game_vivod[14]);
+        zero.setText(game_vivod[15]);
 
         //Проверка на победу
         boolean pobeda = true;
@@ -82,6 +114,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button15 = (Button) findViewById(R.id.button15);
         zero = (Button) findViewById(R.id.zero);
 
+        calculate();
         vivod();
 
         button1.setOnClickListener(this);
@@ -111,7 +144,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view) {                    //Проверка всех соседних клеточек на наличие нуля
               switch(view.getId()){
                   case R.id.button1:
                       if(game_num[1]==0){
@@ -290,6 +323,5 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                           vivod();}
                       break;
                 }
-
             }
 }
