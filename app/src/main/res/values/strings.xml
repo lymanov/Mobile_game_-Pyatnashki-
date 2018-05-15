@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Пятнашки</string>
+    <string name="play">Играть</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_pobeda">Pobeda</string>
+</resources>
