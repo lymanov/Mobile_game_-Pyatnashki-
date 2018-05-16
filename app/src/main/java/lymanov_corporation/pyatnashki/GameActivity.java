@@ -192,7 +192,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                           zamena(4,5);
                           vivod();}
                       if (game_num[8]==0){
-                          zamena(5,8);
+                          zamena(4,8);
                           vivod();}
                       break;
                   case R.id.button6:

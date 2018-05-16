@@ -23,7 +23,11 @@
         <activity
             android:name=".Pobeda"
             android:label="@string/title_activity_pobeda"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".about_the_game"
+            android:label="@string/title_activity_about_the_game"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

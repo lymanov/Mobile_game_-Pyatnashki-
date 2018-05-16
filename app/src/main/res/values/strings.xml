@@ -4,4 +4,6 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_pobeda">Pobeda</string>
+    <string name="title_activity_about_the_game">about_the_game</string>
+    <string name="title_activity_the__game">The_Game</string>
 </resources>
